@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="./assets/index.9dfd037f.css">
+</head>
+
+<body class="h-screen">
+    <section class="pt-0 md:pt-0">
+        <div id="form-tabs" class="t-[53px] mt-0 pb-[30px] md:mt-0  md:pt-0  bg-clightgray md:bg-white">
+            <!-- <div id="form-tabs" class="mt-0 pb-[30px] md:mt-0 pt-0 md:pt-0 bg-clightgray md:bg-white"> -->
+                <!-- class="bg-clightgray  rounded-[10px] md:rounded-t-none pt-[30px] md:pb-[30px] px-5 md:px-0" -->
+
+            <div class="container mx-auto overflow-hidden">
+
+                <!-- Tab Contents -->
+                <div class="px-0">
+                    <div id="tab-contents">
+                        <div id="first" class="">
+                            <div class="pt-[30px] md:pb-[30px] bg-clightgray rounded-[10px]  md:py-[30px] py-[30px]  px-5 md:px-0">
+                          
+                            <!-- <div class="bg-clightgray  rounded-[10px] md:py-[30px] px-5 md:px-0"> -->
+                                <form id="calc-form-1"   name="calculateForm"  class="max-w-[266px] mx-auto">
+                                    <div class="flex flex-col">
+
+                                        <div class=" bg-cmidgray rounded-[5px] pb-[25px]">
+
+
+                                            <div class="relative px-[28px]">
+                                                <div class="w-full mt-[25px]">
+                                                    <label for="convert-from-1"
+                                                        class="block mb-[2px] text-xxs leading-5 text-cinputblack">Convert
+                                                        from</label>
+                                                    <div class="relative">
+                                                        <div
+                                                            class="hidden flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
+                                                            <svg width="13" height="8" viewBox="0 0 13 8" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M0.75 1.45142L6.47446 7.17587L12.1989 1.45142"
+                                                                    stroke="#BEBEBE" stroke-width="1.22667"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                            </svg>
+
+                                                        </div>
+                                                        <select id="convert-from-1" name="unit"
+                                                            class="bg-white appearance-none border border-[#CCCBD0] text-cinputgray text-xs rounded-[5px]  block w-full px-[10px] py-[10px]">
+                                                            <option value="ares" selected>Ares (a)</option>
+                                                            <option value="acres">Acres (ac)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full mt-[10px]">
+                                                    <label for="convert-to-1"
+                                                        class="block mb-[2px] text-xxs leading-5 text-cinputblack">Convert
+                                                        to</label>
+                                                    <div class="relative">
+                                                        <div
+                                                            class="hidden flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
+                                                            <svg width="13" height="8" viewBox="0 0 13 8" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M0.75 1.45142L6.47446 7.17587L12.1989 1.45142"
+                                                                    stroke="#BEBEBE" stroke-width="1.22667"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                            </svg>
+
+                                                        </div>
+                                                        <select id="convert-to-1"
+                                                            class="bg-white appearance-none border border-[#CCCBD0] text-cinputgray text-xs rounded-[5px]  block w-full px-[10px] py-[10px]">
+                                                            <option value="ares">Ares (a)</option>
+                                                            <option value="acres" selected>Acres (ac)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                              
+                                                <svg id="select-switcher-1" class="absolute select-none -mt-[7px] top-1/2 -right-4 cursor-pointer transition-all hover:opacity-90" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="35" height="35" rx="17.5" fill="#797070"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M21.5272 23.5539C21.6419 23.5539 21.7518 23.5084 21.8329 23.4273C21.914 23.3462 21.9596 23.2362 21.9596 23.1215V12.9229L24.6804 15.6444C24.7207 15.6847 24.7684 15.7166 24.821 15.7383C24.8735 15.7601 24.9299 15.7713 24.9868 15.7713C25.0436 15.7713 25.1 15.7601 25.1525 15.7383C25.2051 15.7166 25.2528 15.6847 25.2931 15.6444C25.3333 15.6042 25.3652 15.5564 25.387 15.5039C25.4087 15.4513 25.42 15.395 25.42 15.3381C25.42 15.2812 25.4087 15.2249 25.387 15.1723C25.3652 15.1198 25.3333 15.072 25.2931 15.0318L21.8335 11.5722C21.7933 11.5319 21.7456 11.4999 21.693 11.4781C21.6404 11.4562 21.5841 11.445 21.5272 11.445C21.4702 11.445 21.4139 11.4562 21.3613 11.4781C21.3088 11.4999 21.261 11.5319 21.2208 11.5722L17.7612 15.0318C17.721 15.072 17.6891 15.1198 17.6673 15.1723C17.6456 15.2249 17.6344 15.2812 17.6344 15.3381C17.6344 15.395 17.6456 15.4513 17.6673 15.5039C17.6891 15.5564 17.721 15.6042 17.7612 15.6444C17.8015 15.6847 17.8492 15.7166 17.9018 15.7383C17.9543 15.7601 18.0107 15.7713 18.0676 15.7713C18.1245 15.7713 18.1808 15.7601 18.2333 15.7383C18.2859 15.7166 18.3337 15.6847 18.3739 15.6444L21.0947 12.9222V23.1215C21.0947 23.2362 21.1403 23.3462 21.2214 23.4273C21.3025 23.5084 21.4125 23.5539 21.5272 23.5539ZM13.4729 11.4453C13.5876 11.4453 13.6976 11.4909 13.7787 11.572C13.8598 11.6531 13.9053 11.7631 13.9053 11.8778V22.0778L16.6261 19.3556C16.6664 19.3153 16.7141 19.2834 16.7667 19.2617C16.8192 19.2399 16.8756 19.2287 16.9325 19.2287C16.9894 19.2287 17.0457 19.2399 17.0982 19.2617C17.1508 19.2834 17.1986 19.3153 17.2388 19.3556C17.279 19.3958 17.3109 19.4435 17.3327 19.4961C17.3545 19.5487 17.3657 19.605 17.3657 19.6619C17.3657 19.7188 17.3545 19.7751 17.3327 19.8277C17.3109 19.8802 17.279 19.928 17.2388 19.9682L13.7792 23.4278C13.739 23.4681 13.6913 23.5001 13.6387 23.5219C13.5861 23.5438 13.5298 23.555 13.4729 23.555C13.416 23.555 13.3596 23.5438 13.307 23.5219C13.2545 23.5001 13.2067 23.4681 13.1666 23.4278L9.70696 19.9682C9.66673 19.928 9.63482 19.8802 9.61305 19.8277C9.59128 19.7751 9.58008 19.7188 9.58008 19.6619C9.58008 19.605 9.59128 19.5487 9.61305 19.4961C9.63482 19.4435 9.66673 19.3958 9.70696 19.3556C9.7882 19.2743 9.89839 19.2287 10.0133 19.2287C10.0702 19.2287 10.1265 19.2399 10.1791 19.2617C10.2316 19.2834 10.2794 19.3153 10.3196 19.3556L13.0404 22.0778V11.8778C13.0404 11.7631 13.086 11.6531 13.1671 11.572C13.2482 11.4909 13.3582 11.4453 13.4729 11.4453Z" fill="white"/>
+                                                </svg> 
+                                            </div>
+
+                                            <div class="px-[28px]">
+                                                <div class="w-full mt-[10px]">
+                                                    <label for="value"
+                                                        class="block mb-[2px] text-xxs leading-5 text-cinputblack mt-[10px]"
+                                                        id="volume-label">Value to convert</label>
+                                                    <div class="flex w-full gap-[10px] items-center">
+                                                        <div class="w-full">
+                                                            <div class="relative">
+                                                                <input type="number" name="value" inputmode="numeric" maxlength="60
+                                                                "
+                                                                    required id="amount-to-convert-1"  step="any"
+                                                                    class="bg-white appearance-none border border-[#CCCBD0] text-cinputblack text-xs leading-[18px] rounded-[5px]  block w-full px-[10px] py-[9px]"
+                                                                    placeholder="0"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <label for="r-buttons-1"
+                                                class="block mb-[2px] text-xxs leading-5 text-cinputblack mt-[10px]">Round
+                                                (decimal places)</label>
+                                            <div id="r-buttons-1" class="w-full flex gap-[2px]">
+                                                <div id="round-1-1" onclick="roundToggle(1,1)"
+                                                    class="text-white cursor-pointer text-xs leading-[18px] bg-cbuttongray py-[10px] w-1/5 text-center rounded-[5px] rounded-tr-none rounded-br-none transition-all hover:opacity-90 r-button-1">
+                                                    1
+                                                </div>
+                                                <div id="round-2-1" onclick="roundToggle(2,1)"
+                                                    class="text-white cursor-pointer text-xs leading-[18px] bg-cbuttongray py-[10px] w-1/5 text-center transition-all hover:opacity-90 r-button-1">
+                                                    2
+                                                </div>
+                                                <div id="round-3-1" onclick="roundToggle(3,1)"
+                                                    class="text-white cursor-pointer text-xs leading-[18px] bg-cbuttongray py-[10px] w-1/5 text-center transition-all hover:opacity-90 r-button-1">
+                                                    3
+                                                </div>
+                                                <div id="round-4-1" onclick="roundToggle(4,1)"
+                                                    class="text-white cursor-pointer text-xs leading-[18px] bg-cbuttongray py-[10px] w-1/5 text-center transition-all hover:opacity-90 r-button-1">
+                                                    4
+                                                </div>
+                                                <div id="round-0-1" onclick="roundToggle(0,1)"
+                                                    class="text-white cursor-pointer text-xs leading-[18px] bg-cbuttongray py-[10px] w-1/5 text-center transition-all hover:opacity-90 rounded-[5px] rounded-tl-none rounded-bl-none r-button-1">
+                                                    -
+                                                </div>
+                                            </div>
+
+                                                <div class="flex w-full justify-center select-none">
+                                                    <a href="./?result=true" onclick="formSubmit(1)"  id="form-submit-1" 
+                                                        class="relative text-white w-full h-[67px] bg-cred mt-[15px] text-sm flex justify-center items-center transition-all hover:opacity-90 rounded-[5px]">
+                                                      
+                                                        <input id="go" type="submit" onclick="senddat();" style="position: absolute;opacity: 0; z-index:-10;" >
+                                                        <div id="button-init-1"
+                                                            class="w-full flex justify-center gap-2">
+                                                            <svg width="15" height="19" viewBox="0 0 15 19" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M4.59115 4.94047H10.2811M10.2811 14.4237V11.5787M7.43612 14.4237H7.44561M4.59115 14.4237H4.60063M4.59115 11.5787H4.60063M7.43612 11.5787H7.44561M10.2811 8.73377H10.2906M7.43612 8.73377H7.44561M4.59115 8.73377H4.60063M2.6945 18.217H12.1777C12.6808 18.217 13.1632 18.0172 13.5189 17.6615C13.8746 17.3058 14.0744 16.8234 14.0744 16.3204V3.04382C14.0744 2.5408 13.8746 2.05838 13.5189 1.70269C13.1632 1.347 12.6808 1.14717 12.1777 1.14717H2.6945C2.19148 1.14717 1.70906 1.347 1.35337 1.70269C0.997676 2.05838 0.797852 2.5408 0.797852 3.04382V16.3204C0.797852 16.8234 0.997676 17.3058 1.35337 17.6615C1.70906 18.0172 2.19148 18.217 2.6945 18.217Z"
+                                                                    stroke="white" stroke-width="1.42249"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                            <span>Convert</span>
+                                                        </div>
+                                                        <div id="button-loading-1" class="hidden">
+                                                            <svg width="20" height="20" viewBox="0 0 105 105"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="#fff">
+                                                                <circle cx="12.5" cy="12.5" r="12.5">
+                                                                    <animate attributeName="fill-opacity" begin="0s"
+                                                                        dur="1s" values="1;.2;1" calcMode="linear"
+                                                                        repeatCount="indefinite" />
+                                                                </circle>
+                                                                <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+                                                                    <animate attributeName="fill-opacity" begin="100ms"
+                                                                        dur="1s" values="1;.2;1" calcMode="linear"
+                                                                        repeatCount="indefinite" />
+                                                                </circle>
+                                                                <circle cx="52.5" cy="12.5" r="12.5">
+                                                                    <animate attributeName="fill-opacity" begin="300ms"
+                                                                        dur="1s" values="1;.2;1" calcMode="linear"
+                                                                        repeatCount="indefinite" />
+                                                                </circle>
+                                                                <circle cx="52.5" cy="52.5" r="12.5">
+                                                                    <animate attributeName="fill-opacity" begin="600ms"
+                                                                        dur="1s" values="1;.2;1" calcMode="linear"
+                                                                        repeatCount="indefinite" />
+                                                                </circle>
+                                                                <circle cx="92.5" cy="12.5" r="12.5">
+                                                                    <animate attributeName="fill-opacity" begin="800ms"
+                                                                        dur="1s" values="1;.2;1" calcMode="linear"
+                                                                        repeatCount="indefinite" />
+                                                                </circle>
+                                                                <circle cx="92.5" cy="52.5" r="12.5">
+                                                                    <animate attributeName="fill-opacity" begin="400ms"
+                                                                        dur="1s" values="1;.2;1" calcMode="linear"
+                                                                        repeatCount="indefinite" />
+                                                                </circle>
+                                                                <circle cx="12.5" cy="92.5" r="12.5">
+                                                                    <animate attributeName="fill-opacity" begin="700ms"
+                                                                        dur="1s" values="1;.2;1" calcMode="linear"
+                                                                        repeatCount="indefinite" />
+                                                                </circle>
+                                                                <circle cx="52.5" cy="92.5" r="12.5">
+                                                                    <animate attributeName="fill-opacity" begin="500ms"
+                                                                        dur="1s" values="1;.2;1" calcMode="linear"
+                                                                        repeatCount="indefinite" />
+                                                                </circle>
+                                                                <circle cx="92.5" cy="92.5" r="12.5">
+                                                                    <animate attributeName="fill-opacity" begin="200ms"
+                                                                        dur="1s" values="1;.2;1" calcMode="linear"
+                                                                        repeatCount="indefinite" />
+                                                                </circle>
+                                                            </svg>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="ingridients-1" name="product" value="water">
+                                </form>
+                            </div>
+                            <div id="form-result-1" class="hidden" style="margin-top: 30px;">
+                                <div
+                                    class="flex flex-col max-w-[266px] md:max-w-none mx-auto md:w-full justify-center items-center rounded-[5px] border border-[#D1D0D5] py-[23px] text-base text-center md:px-[66px] px-4">
+                                    <div class="text-black uppercase">Result</div>
+                                    <div id="response-product-1"
+                                        class="text-[#828282] text-[10px] leading-[15px] uppercase my-2"></div>
+                                        <div id="form-result-preloader-1" class="hidden">
+                                            <svg class="h-5" width="135" height="140" viewBox="0 0 135 140"
+                                                xmlns="http://www.w3.org/2000/svg" fill="#ccc">
+                                                <rect y="10" width="15" height="120" rx="6">
+                                                    <animate attributeName="height" begin="0.5s" dur="1s"
+                                                        values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear"
+                                                        repeatCount="indefinite"></animate>
+                                                    <animate attributeName="y" begin="0.5s" dur="1s"
+                                                        values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear"
+                                                        repeatCount="indefinite"></animate>
+                                                </rect>
+                                                <rect x="30" y="10" width="15" height="120" rx="6">
+                                                    <animate attributeName="height" begin="0.25s" dur="1s"
+                                                        values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear"
+                                                        repeatCount="indefinite"></animate>
+                                                    <animate attributeName="y" begin="0.25s" dur="1s"
+                                                        values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear"
+                                                        repeatCount="indefinite"></animate>
+                                                </rect>
+                                                <rect x="60" width="15" height="140" rx="6">
+                                                    <animate attributeName="height" begin="0s" dur="1s"
+                                                        values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear"
+                                                        repeatCount="indefinite"></animate>
+                                                    <animate attributeName="y" begin="0s" dur="1s"
+                                                        values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear"
+                                                        repeatCount="indefinite"></animate>
+                                                </rect>
+                                                <rect x="90" y="10" width="15" height="120" rx="6">
+                                                    <animate attributeName="height" begin="0.25s" dur="1s"
+                                                        values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear"
+                                                        repeatCount="indefinite"></animate>
+                                                    <animate attributeName="y" begin="0.25s" dur="1s"
+                                                        values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear"
+                                                        repeatCount="indefinite"></animate>
+                                                </rect>
+                                                <rect x="120" y="10" width="15" height="120" rx="6">
+                                                    <animate attributeName="height" begin="0.5s" dur="1s"
+                                                        values="120;110;100;90;80;70;60;50;40;140;120" calcMode="linear"
+                                                        repeatCount="indefinite"></animate>
+                                                    <animate attributeName="y" begin="0.5s" dur="1s"
+                                                        values="10;15;20;25;30;35;40;45;50;0;10" calcMode="linear"
+                                                        repeatCount="indefinite"></animate>
+                                                </rect>
+                                            </svg>
+            
+                                        </div>
+                                        <div id="response-result-1" class="text-clightgreen"></div>
+                                    <div class="text-[#828282] text-[10px] leading-[15px] uppercase mt-[10px]">Figures rounded to max <span id="round-text-1"></span> decimal places.</div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="scroll-hook"></div>
+            <!-- 
+              <div id="form-result-1" class="hidden" style="margin-top: 30px;">
+            md:
+        -->
+            <input type="hidden" id="round-value" value="1">
+        </div>
+    </section>
+    <script>
+
+
+    </script>
+
+</body>
+
+<!-- <script>
+    function roundToggle(val, butId) {
+
+        let roundInput = document.getElementById('round-value');
+        roundInput.value = val;
+
+        let curButton = document.getElementById('round-' + butId);
+        let roundButtons = document.querySelectorAll('.r-button');
+        roundButtons.forEach(function (roundButton) {
+            roundButton.classList.remove('bg-cred');
+            roundButton.classList.add('bg-cbuttongray');
+        });
+        curButton.classList.remove('bg-cbuttongray');
+        curButton.classList.add('bg-cred');
+    }
+</script> -->
+<script src="./assets/main.9f878ae8.js"></script>
+
+</html>
